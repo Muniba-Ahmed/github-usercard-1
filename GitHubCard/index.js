@@ -1,8 +1,12 @@
+import axios from "axios"; //npm install axios
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+axios.get(" https://api.github.com/users/Muniba-Ahmed").then((response) => {
+  console.log(response.data);
+});
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -49,6 +53,42 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function ghcMaker(cardObj) {
+  //Create the elements according to the DOM markup
+
+  const containerCard = document.createElement("div");
+  const image = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const name = document.createElement("h3");
+  const username = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const profileLink = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  //Add classes
+  containerCard.classList.add("card");
+  cardInfo.classList.add("card-info");
+  name.classList.add("name");
+  username.classList.add("username");
+  //add text content and attributes
+  image.src = cardObj.avatar_url;
+  name.textContent = carbObj.name;
+  username.textContent = cardObj.login;
+  location.textContent = cardObj.location;
+  profile.textContent = "Profile";
+  profileLink.textContent = "Profile Link";
+  profileLink.href = cardObj.html_url;
+  followers.textContent = `Followers: ${cardObj.follwers}`;
+  following.textContent = `Following: ${cardObj.follwing}`;
+  bio.textContent = cardObj.bio;
+  //append to the container div
+
+  //return
+}
 
 /*
   List of LS Instructors Github username's:
