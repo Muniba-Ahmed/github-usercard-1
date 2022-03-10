@@ -70,13 +70,16 @@ function ghcMaker(cardObj) {
   const bio = document.createElement("p");
 
   //Add classes
+
   containerCard.classList.add("card");
   cardInfo.classList.add("card-info");
   name.classList.add("name");
   username.classList.add("username");
+
   //add text content and attributes
+
   image.src = cardObj.avatar_url;
-  name.textContent = carbObj.name;
+  name.textContent = cardObj.name;
   username.textContent = cardObj.login;
   location.textContent = cardObj.location;
   profile.textContent = "Profile";
@@ -85,9 +88,22 @@ function ghcMaker(cardObj) {
   followers.textContent = `Followers: ${cardObj.follwers}`;
   following.textContent = `Following: ${cardObj.follwing}`;
   bio.textContent = cardObj.bio;
+
   //append to the container div
 
+  containerCard.appendChild(image);
+  containerCard.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(username);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(profileLink);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
   //return
+  return containerCard;
 }
 
 /*
