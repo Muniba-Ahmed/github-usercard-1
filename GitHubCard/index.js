@@ -4,9 +4,30 @@ import axios from "axios"; //npm install axios
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-axios.get(" https://api.github.com/users/Muniba-Ahmed").then((response) => {
-  console.log(response.data);
-});
+
+const followersArray = [
+  "Muniba-Ahmed",
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell",
+];
+
+function gitCard(username) {
+  axios
+    .get(`https://api.github.com/users/${username}`)
+    .then((response) => {
+      document.querySelector(".cards").appendChild(ghcMaker(response.data));
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+for (let i = 0; i < followersArray.length; i++) {
+  gitCard(followersArray[i]);
+}
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -31,8 +52,6 @@ axios.get(" https://api.github.com/users/Muniba-Ahmed").then((response) => {
     Using that array, iterate over it, requesting data for each user, creating a new card for each
     user, and adding that card to the DOM.
 */
-
-const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
